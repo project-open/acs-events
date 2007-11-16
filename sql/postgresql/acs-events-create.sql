@@ -5,26 +5,12 @@
 -- @cvs-id $Id$
 
 
--- Make sure the function is there during an upgrade from ]po[ 3.1.2 -> 3.3 or higher
-
-create function inline_0 () returns integer as '
--- Create a bitfromint4(integer) function if it doesn''t exists.
--- Due to a bug in PG 7.3 this function is absent in PG 7.3.
-declare
-    v_bitfromint4_count integer;
+create or replace function bitfromint4 (integer) returns bit varying as '
 begin
-    select into v_bitfromint4_count count(*) from pg_proc where proname = ''bitfromint4'';
-    if v_bitfromint4_count = 0 then
-        create or replace function bitfromint4 (integer) returns bit varying as ''
-        begin
-            return $1::bit(32);
-        end;'' language ''plpgsql'' immutable strict;
-   end if;
-   return 1;
-end;' language 'plpgsql';
+    return $1::bit(32);
+end;' language 'plpgsql' immutable strict;
 
-select inline_0();
-drop function inline_0();
+
 
 
 -- Create the objects and packages for the ACS Events service
