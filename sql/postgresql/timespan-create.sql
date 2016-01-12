@@ -8,7 +8,6 @@
 -- $Id$
 
 create sequence timespan_sequence start  1;
--- create view timespan_seq as select nextval('timespan_sequence') as nextval from dual;
 
 -- Table for storing time intervals.  Note that time intervals can be open on 
 -- either end.  This is represented by a null value for start_date or end_date.
