@@ -8,10 +8,10 @@
 
 -- PG 9.x support - changes regarding usage of sequences
 
-drop view if exists acs_events_seq;
-drop sequence if exists acs_events_sequence;
-drop view if exists timespan_seq;
-drop view if exists recurrence_seq;
+drop view acs_events_seq;
+drop sequence acs_events_sequence;
+drop view timespan_seq;
+drop view recurrence_seq;
 
 
 

@@ -13,5 +13,4 @@ drop table   timespans;
 select drop_package('time_interval');
 drop table   time_intervals;
 
-drop view if exists timespan_seq;
 drop sequence timespan_sequence;
